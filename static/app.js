@@ -15,6 +15,7 @@ const LANES = [
 let TASKS = [], lane = 0, DATA, typer, CUR = null;
 
 const api = async (url, method = "GET", body) => {
+  if (window.DEMO) return window.DEMO(url, method, body);   // <- add this line
   const r = await fetch(url, { method, headers: { "Content-Type": "application/json" }, body: body ? JSON.stringify(body) : undefined });
   if (!r.ok) throw new Error(r.status);
   return r.json();

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Haunted Vault</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true">
+  <div class="moon"></div><div class="stars"></div>
+  <svg class="yard" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice">
+    <path d="M0 150C220 95 470 185 720 140S1180 105 1440 160V220H0Z"/>
+    <path d="M96 190v-44a22 22 0 0 1 44 0v44Z"/><path d="M420 196v-30a16 16 0 0 1 32 0v30Z"/>
+    <path d="M1180 176v-52a26 26 0 0 1 52 0v52Z"/><path d="M1290 190v-34a18 18 0 0 1 36 0v34Z"/>
+  </svg>
+</div>
+<canvas id="petals" aria-hidden="true"></canvas>
+<svg id="banner" aria-hidden="true"></svg>
+
+<header class="nav">
+  <a class="brand" href="/"><i class="ph ph-ghost" aria-hidden="true"></i>Haunted Vault</a>
+  <p id="stats"></p>
+</header>
+
+<main class="bento">
+  <section class="cell map" style="--c:0" aria-labelledby="mapTitle">
+    <div class="cell-head">
+      <div><h2 id="mapTitle">Graveyard map</h2><p>Notes you stopped touching turn into ghosts. Click one.</p></div>
+      <ul class="legend">
+        <li><i class="sw f"></i>edited in the last 14 days</li>
+        <li><i class="sw g"></i>untouched 14+ days</li>
+        <li><i class="sw l"></i>[[link]]</li>
+      </ul>
+    </div>
+    <svg id="graph" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Graph of your notes"></svg>
+  </section>
+
+  <section class="cell tasks" style="--c:1" aria-labelledby="taskTitle">
+    <div class="cell-head"><h2 id="taskTitle">Tasks</h2><p id="taskCount"></p></div>
+    <form id="addForm">
+      <label for="newTask">Add a task</label>
+      <div class="row">
+        <input id="newTask" maxlength="200" autocomplete="off" required>
+        <button class="btn primary" type="submit"><i class="ph ph-plus" aria-hidden="true"></i>Add</button>
+      </div>
+    </form>
+    <div class="tabs" role="tablist" aria-label="Task age">
+      <button class="tab" role="tab" data-k="0">Recent <b>0</b></button>
+      <button class="tab" role="tab" data-k="1">Old <b>0</b></button>
+      <button class="tab" role="tab" data-k="2">Abandoned <b>0</b></button>
+    </div>
+    <p id="laneHint" class="hint"></p>
+    <ul id="taskList"></ul>
+    <button id="importBtn" class="btn" type="button"><i class="ph ph-download-simple" aria-hidden="true"></i><span>Pull todos from notes</span></button>
+  </section>
+
+  <section class="cell report" style="--c:2" aria-labelledby="repTitle">
+    <h2 id="repTitle">Haunting report</h2>
+
+    <p id="rText" class="story">A local model reads your most neglected notes and tells you what has been going on in there.</p>
+        <div class="meter" id="meter"></div>
+        <button id="reportBtn" class="btn primary" type="button">Write report</button>
+  </section>
+
+    <section class="cell neglected" style="--c:3" aria-labelledby="negTitle">
+    <h2 id="negTitle">Most neglected</h2>
+    <p class="sub">The five notes that have gone quiet the longest. Click a stone to wake one.</p>
+    <div id="negList" class="yard-row"></div>
+  </section>
+</main>
+
+<aside id="tomb" class="sheet hidden" aria-live="polite">
+  <button class="icon close" onclick="closeTomb()" aria-label="Close"><i class="ph ph-x" aria-hidden="true"></i></button>
+  <h3 id="tName"></h3>
+  <p id="tMeta"></p>
+  <p id="tEpitaph" class="epitaph"></p>
+  <h4>Cause of death</h4><p id="tCause"></p>
+  <h4>Resurrection ritual</h4><p id="tRes"></p>
+  <h4>Unfinished business</h4><ul id="tTodos"></ul>
+  <button id="tAdd" class="btn primary" type="button" disabled>Add ritual as a task</button>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+     <script src="demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
