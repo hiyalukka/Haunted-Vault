@@ -4,7 +4,6 @@
 
 Built for the **DEV x Hacktoberfest Open-Source AI Challenge, Week 4: Ghost in the Machine**.
 
-![Haunted Vault screenshot](screenshot.png)
 
 ## What it does
 
