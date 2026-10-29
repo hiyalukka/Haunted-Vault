@@ -1,6 +1,8 @@
 # 👻 Haunted Vault
 
 > Notes you stop touching turn into ghosts. A local AI writes their epitaphs and tells you how to bring them back.
+>
+> Live demo: https://hiyalukka.github.io/Haunted-Vault/
 
 Built for the **DEV x Hacktoberfest Open-Source AI Challenge, Week 4: Ghost in the Machine**.
 
